@@ -32,7 +32,7 @@ public class RedisController {
    
    @RequestMapping("/list")
    @ResponseBody
-   public String list() {
+   public String list(@PathVariable String name) {
 
 	   String html = "<HTML>";
 	   // get the bitcount of our counter
@@ -69,6 +69,7 @@ public class RedisController {
        InhaalExamen examen = new InhaalExamen(name, exam, reason);
        
        service.hset("InhaalExamen", (Map<String, String>) examen);
+
        return new ResponseEntity<>(HttpStatus.OK);
    }
    
